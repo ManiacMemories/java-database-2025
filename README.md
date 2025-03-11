@@ -14,7 +14,7 @@ java개발자 과정 Database 리포지토리
     - SQL을 배우는 것!
 - Oracle 설치(Docker)
     1. powershell 오픈
-    2. pull 내려받기
+    2. docker pull 내려받기
         ```shell
         > docker pull oracleinanutshell/oracle-xe-11g
         ```
@@ -73,4 +73,9 @@ java개발자 과정 Database 리포지토리
         3. NULL(!)
         4. ORDER BY 정렬
         5. 집합
+
+- 함수(내장함수)
+    - 문자함수 : [SQL](./day01/sql02_함수.sql)
+    - 숫자함수
+
 ## 2일차
