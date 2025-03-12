@@ -176,3 +176,35 @@ SELECT department_id, department_name
 SELECT employee_id, first_name || last_name AS "full_name"
   FROM employees
  WHERE employee_id BETWEEN 110 AND 150;
+
+
+
+SELECT CASE job_id WHEN 'AD_PRES' THEN '사장'
+				   WHEN 'AD_VP' THEN '부사장'
+				   WHEN 'IT_PROG' THEN '프로그래머'
+				   WHEN 'SA_MAN' THEN '영업사원'
+				   ELSE '미분류'
+		END AS 직급
+	 , employee_id
+	 , job_id
+  FROM employees;
+
+/*
+ * 정규식(Regula Expression) - 문자열 패턴을 가지고, 동일한 패턴 데이터 추출 사용
+ * ^,$, ., *, [], [^], {} 패턴인식할때 필요한 키워드.
+ */
+	 
+	 
+SELECT *
+  FROM employees
+ WHERE phone_number LIKE '%.%.%'; -- 세자리 전화, 네자리 전화번호가 구분안됨
+ 
+-- 전화번호가 .로 구분되는 세자리 전화번호만 필터링 
+SELECT *
+  FROM employees
+ WHERE REGEXP_LIKE(phone_number, '[0-9]{3}.[0-9]{3}.[0-9]{4}'); -- 세자리 전화, 네자리 전화번호가 구분안됨
+
+-- first_name이 J로 시작하고, 두번째 글자가 a나 o인 사람을 출력하시오.
+SELECT *
+  FROM employees
+ WHERE REGEXP_LIKE(first_name, '^J(a|o)');
