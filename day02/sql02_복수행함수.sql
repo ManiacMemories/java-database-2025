@@ -136,4 +136,4 @@ SELECT employee_id, last_name, salary
 	 , dense_rank() OVER (ORDER BY salary desc) AS "덴스랭크"
 	 , row_number() OVER (ORDER BY salary desc) AS "행번호"
   FROM employees;
- 
+
