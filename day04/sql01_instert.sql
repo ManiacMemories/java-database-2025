@@ -1,0 +1,53 @@
+/*
+ * DML중 SELECT 이외
+ * INSERT, UPDATE, DELETE
+*/
+-- INSERT
+SELECT *
+  FROM NEW_TABLE nt ;
+
+INSERT INTO NEW_TABLE (NO, name, JUMIN,BIRTH,SALARY)
+VALUES (1, '홍길동', '810205-1825697', '1981-02-05', 5000);
+
+-- 테이블 컬럼리스트와 동일한 순서, 동일한 값을 넣을때
+-- 단, 컬럼리스트와 순서도 다르고, 값리스트 갯수도 다르면 컬럼리스트 생략 불가!
+INSERT INTO NEW_TABLE
+VALUES (2, '홍길순', '830105-2825697', '1983-02-05', 4000);
+
+-- 컬럼리스트 순서가 다를때,
+INSERT INTO NEW_TABLE (JUMIN,NAME,"NO")
+VALUES ('810205-1825697', '성유고', 3);
+
+INSERT INTO NEW_TABLE 
+VALUES (4, '홍길태','830105-1812415', NULL,NULL);
+
+-- 한 테이블에 있는 데이터를 모두 옮기면서 새로운 테이블 생성
+CREATE TABLE PROFESSOR_new
+AS
+ SELECT * FROM professor;
+
+SELECT * FROM PROFESSOR_NEW pn ;
+
+INSERT INTO PROFESSOR_NEW
+SELECT * FROM PROFESSOR;
+
+-- 새로 만들어진 테이블 Professor_new 데이터를 삽입 테스트
+INSERT INTO PROFESSOR_new(PROFNO,NAME,ID,POSITION,pay,HIREDATE)
+VALUES (4008, 'Tom Cruise', 'Cruise', 'instructor', 300, '2025-03-14');
+
+-- Professor_new는 PK가 없기때문에 같은 값이 들어감
+INSERT INTO PROFESSOR_new(PROFNO,NAME,ID,POSITION,pay,HIREDATE)
+VALUES (4008, 'Tom Holland', 'Holland', 'instructor', 310, '2025-03-14');
+
+-- 대량의 데이터를 삽입
+INSERT ALL
+	INTO NEW_TABLE VALUES (5, '홍길동', '810205-1825697', '1981-02-05', 5000)
+	INTO NEW_TABLE VALUES (6, '홍길라', '810205-1825697', '1981-02-05', 5000)
+	INTO NEW_TABLE VALUES (7, '홍길다', '810205-1825697', '1981-02-05', 5000)
+	INTO NEW_TABLE VALUES (8, '홍길나', '810205-1825697', '1981-02-05', 5000)
+	INTO NEW_TABLE VALUES (9, '홍길가', '810205-1825697', '1981-02-05', 5000)
+SELECT * FROM dual;
+
+SELECT * FROM NEW_TABLE;
+
+DROP TABLE PROFESSOR_NEW;
