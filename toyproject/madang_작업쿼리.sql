@@ -11,3 +11,7 @@ INSERT INTO students (std_id,std_name,STD_MOBILE ,STD_REGYEAR)
 VALUES (seq_student.nextval,'홍길순','010-9999-8877', 2000);
 
 COMMIT;
+
+SELECT std_id, std_name
+	 , std_mobile, std_regyear
+  FROM students;
