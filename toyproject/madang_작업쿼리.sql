@@ -15,3 +15,6 @@ COMMIT;
 SELECT std_id, std_name
 	 , std_mobile, std_regyear
   FROM students;
+
+INSERT INTO MADANG.STUDENTS	(std_id, std_name, std_mobile, std_regyear)
+VALUES(SEQ_STUDENT.NEXTVAL, :v_std_name, :v_std_mobile, :v_std_regyear);
